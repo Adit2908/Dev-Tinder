@@ -7,3 +7,5 @@
 - Install nodemon and update script inside package.json
 - difference between caret and tilde
 
+- initialize git 
+gitignore
