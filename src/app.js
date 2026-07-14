@@ -2,37 +2,28 @@ const express = require("express");
 
 const app = express();
 
-// app.use("/route",rH,[rH2,rH3],rH4,rH5)
+const {adminAuth,userAuth}= require("./middlewares/auth")
 
-app.use("/user",
-(req,res,next)=>{
-  console.log("Handling the route user!!");
-  next();
- 
-},
-(req,res,next) =>{
-  console.log("Handling the route user 2!!");
-  // res.send("2nd response!!");
-  next();
-},
+//Handle Auth Middleware for all request GET,POST,PUT and DELETE
+app.use("/admin",adminAuth)
 
-(req,res,next) =>{
-  console.log("Handling the route user 3!!");
-  // res.send("3rd response!!")
-  next();
-},
-(req,res,next) =>{
-  console.log("Handling the route user 4!!");
-  // res.send("4th response!!")
-  next();
-},
+app.post("/user/login",(req,res)=>{
+  res.send("User loggin in successfully")
+})
 
-(req,res,next) =>{
-  console.log("Handling the route user 5!!");
-  res.send("5th response!!")
-  
-}
-)
+
+app.get("/user/data",userAuth,(req,res)=>{
+    res.send("User Data Sent")
+})
+
+
+app.get("/admin/getAllData",(req,res)=>{
+    res.send("All Data Sent")
+})
+
+app.get("/admin/deleteUser",(req,res)=>{
+  res.send("Deleted a User")
+})
 
 app.listen(7777, () => {
   console.log("server is successfully lisetening on port 7777...");
