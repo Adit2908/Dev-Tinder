@@ -3,6 +3,7 @@ const connectDB=require("./config/database")
 const app = express();
 const User =require('./models/user')
 
+
 app.use(express.json())
 
 
@@ -55,7 +56,34 @@ app.get("/feed",async(req,res)=>{
   }
 })
 
+//Delete a user from the database
+app.delete("/user",async(req,res)=>{
+  const userId=req.body.userId;
+  try {
+    const users= await User.findByIdAndDelete({_id:userId});
+    // const users= await User.findByIdAndDelete(userId);
 
+    res.send("User deleted successfully")
+  } catch (error) {
+    res.status(400).send("Something went totally wrong")
+  }
+})
+
+//Update data of the user
+app.patch("/user",async(req,res)=>{
+  const userId=req.body.userId;
+  const data =await req.body;
+try{
+  const users=await User.findByIdAndUpdate({_id:userId},data,{
+    returnDocument:'after',
+    runValidators:true,
+  });
+  console.log(users)
+  res.send("User updated successfully")
+}catch(err){
+  res.status(400).send("update failed"+ err.message)
+}
+})
 
 
 connectDB()
