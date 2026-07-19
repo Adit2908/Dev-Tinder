@@ -65,4 +65,6 @@
 - Install validator
 - Explore validator function and use validator functions for password,email,photoUrl
 - NEVER TRUST req.body
+- Never go
+
 

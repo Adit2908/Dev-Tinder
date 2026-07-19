@@ -78,6 +78,7 @@ app.patch("/user/:userId", async (req, res) => {
     "gender",
     "age",
     "skills",
+    
   ];
 
 
