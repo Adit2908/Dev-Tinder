@@ -61,4 +61,8 @@
 - Improve the DB Schema - Put all appropriate validations on each field in Schema
 - Add timeStamps to the userSchema
 - Add API level validation on Patch request & signup post api
--DATA Sanitizing0  Add API validation for each field 
+- DATA Sanitizing - Add API validation for each field 
+- Install validator
+- Explore validator function and use validator functions for password,email,photoUrl
+- NEVER TRUST req.body
+
