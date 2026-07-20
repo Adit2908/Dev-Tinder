@@ -14,6 +14,15 @@ const ValidateSignUpData=(req)=>{
         throw new Error("Please enter a strong password")
     }
 } 
+
+// const ValidateLoginData=(req)=>{
+//     const{emailId,password}=req.body;
+//     if(!validator.isEmail(emailId)){
+//         throw new Error("Password is not valid");
+//     }else if(!validator.isStrongPassword(password)){
+//         throw new Error("Password is not valid")
+//     }
+// }
 module.exports={
-    ValidateSignUpData,
+    ValidateSignUpData
 }
