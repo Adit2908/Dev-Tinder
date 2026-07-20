@@ -64,7 +64,10 @@
 - DATA Sanitizing - Add API validation for each field 
 - Install validator
 - Explore validator function and use validator functions for password,email,photoUrl
-- NEVER TRUST req.body
-- Never go
+- Never trust req.body
+
+- Validate data in Signup API
+- Install bcrypt package
+- Create PasswordHash using bcrypt.hash & save the user is encrypted the password
 
 
