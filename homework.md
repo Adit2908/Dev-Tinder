@@ -1,22 +1,22 @@
 - Create a repository
 - Initilize the repository
 - node modules,package.json,package.lock.json
-- Install express 
-- create  server
+- Install express
+- create server
 - write request handler for /test,/hello
 - Install nodemon and update script inside package.json
 - difference between caret and tilde
 
-- initialize git 
-.gitignore
-- Create a remote  repo on github
+- initialize git
+  .gitignore
+- Create a remote repo on github
 - Push all code to remote origin
 - Play with routes and route extensions ex. /hello, /, hello/2
 - Order of the routes matter a lot
 - Install Postman app and make a workspace/collection > test API call
 - Write logic to handle GET,POST,PATCH,DELETE API Calls and test them on Postman
-- Explore routing and use of ?,+,(),* in the routes
-- use of regex in routes /a/.*fly$/
+- Explore routing and use of ?,+,(),\* in the routes
+- use of regex in routes /a/.\*fly$/
 - Reading the query params in the routes
 - Reading the dynamic routes
 
@@ -35,7 +35,7 @@
 - Install mongoose libraray
 - connect your application to the Database <connection-urls> /devTinder
 - call the connectDB function to database before starting application on 7777
-- Create a userSchema & user Model 
+- Create a userSchema & user Model
 - Create POST /signup API to add data to database
 - Push some document using API calls from postman
 - Error handling using try, catch
@@ -61,7 +61,7 @@
 - Improve the DB Schema - Put all appropriate validations on each field in Schema
 - Add timeStamps to the userSchema
 - Add API level validation on Patch request & signup post api
-- DATA Sanitizing - Add API validation for each field 
+- DATA Sanitizing - Add API validation for each field
 - Install validator
 - Explore validator function and use validator functions for password,email,photoUrl
 - Never trust req.body
@@ -78,7 +78,9 @@
 - Install jsonwebtoken
 
 - //In Login API ,after email and password validation , create a JWT token and send it to the user in cookies.
-- read the cookies inside your profile and find the logged in  user.
-
-
-
+- read the cookies inside your profile and find the logged in user.
+- userAuth Middleware
+- Add the userAuth middleware in profile API and a new sendConnectionRequest API
+- Set the expiry of JWT token and cookies to 7 days
+- Create userSchema method to getJWT();
+- Create UserSchema method to compare password(passwordInputByUser)
