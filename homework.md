@@ -109,3 +109,9 @@
 
 - Read this article about compound indexes - https://www.mongodb.com/docs/manual/core/indexes/index-types/index-compound/
 - ALWAYS THINK ABOUT CORNER CASES
+
+
+- Write code with proper validation for POST/request/review/:status/:requestId
+- THought proces - POST vs GET
+- Read about ref and populate -https://mongoosejs.com/docs/populate.html
+- Create GET /user/request/received with all checks
