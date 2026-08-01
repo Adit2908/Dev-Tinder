@@ -115,3 +115,7 @@
 - THought proces - POST vs GET
 - Read about ref and populate -https://mongoosejs.com/docs/populate.html
 - Create GET /user/request/received with all checks
+- Create GET GT/user/connections
+
+- Logic for GET /feed API
+- Explore the $nin, $and, $ne and other query operators
