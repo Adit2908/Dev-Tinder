@@ -5,7 +5,7 @@ const userAuth = async (req, res, next) => {
   try {
     const { token } = req.cookies;
     if (!token) {
-      throw new Error("Token is not valid!!!!!");
+      return res.status(401).send("Please Login!")
     }
 
     const decodedObj = await jwt.verify(token, "DEV@Tinder$678");
@@ -15,7 +15,7 @@ const userAuth = async (req, res, next) => {
     const user = await User.findById(_id);
 
     if (!user) {
-      throw new Error("user not found");
+      throw new Error("user not foundz");
     }
 
     req.user = user;
@@ -29,3 +29,5 @@ const userAuth = async (req, res, next) => {
 };
 
 module.exports = { userAuth };
+
+
