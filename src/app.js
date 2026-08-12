@@ -6,10 +6,11 @@ const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
 const cors=require('cors')
 
+const PORT = process.env.PORT || 7777;
 
 app.use(cors({
-  // origin:"http://localhost:5173",
-  origin:"https://dev-tinder-web-aditya34.vercel.app/",
+  origin:"http://localhost:5173",
+  origin:"https://dev-tinder-web-aditya34.vercel.app",
   credentials:true,
 }));
 app.use(express.json());
@@ -29,7 +30,7 @@ app.use("/",userRouter)
 connectDB()
   .then(() => {
     console.log("Database connection established");
-    app.listen(7777, () => {
+    app.listen(PORT, () => {
       console.log("server is successfully lisetening on port 7777...");
     });
   })
