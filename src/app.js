@@ -8,7 +8,8 @@ const cors=require('cors')
 
 
 app.use(cors({
-  origin:"http://localhost:5173",
+  // origin:"http://localhost:5173",
+  origin:"https://dev-tinder-web-aditya34.vercel.app/",
   credentials:true,
 }));
 app.use(express.json());
@@ -33,5 +34,5 @@ connectDB()
     });
   })
   .catch((err) => {
-    console.error("Database cannot be connected");
+    console.error("Database cannot be connected",err);
   });
