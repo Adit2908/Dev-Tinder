@@ -8,11 +8,22 @@ const cors=require('cors')
 
 const PORT = process.env.PORT || 7777;
 
-app.use(cors({
-  origin:"http://localhost:5173",
-  origin:"https://dev-tinder-web-aditya34.vercel.app",
-  credentials:true,
-}));
+// app.use(cors({
+//   origin:"http://localhost:5173",
+//   origin:"https://dev-tinder-web-aditya34.vercel.app",
+//   credentials:true,
+// }));
+
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://dev-tinder-web-aditya34.vercel.app"
+    ],
+    credentials: true,
+  })
+);
 app.use(express.json());
 app.use(cookieParser());
 
