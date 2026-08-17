@@ -17,7 +17,7 @@ authRouter.post("/signup", async (req, res) => {
       age,
       gender,
       photoUrl,
-      about
+      about,
     } = req.body;
     //Encrypt the password
     const passwordHash = await bcrypt.hash(password, 10);
@@ -32,19 +32,22 @@ authRouter.post("/signup", async (req, res) => {
       age,
       gender,
       photoUrl,
-      about
+      about,
     });
 
-    const savedUser= await user.save();
-     const token = await savedUser.getJWT();
+    const savedUser = await user.save();
+    const token = await savedUser.getJWT();
 
-      //Add the token to cookie and send the response to the user
-      res.cookie("token", token, {
-        expires: new Date(Date.now() + 8 * 3600000),
-      });
+    //Add the token to cookie and send the response to the user
+    // res.cookie("token", token, {
+    //   expires: new Date(Date.now() + 8 * 3600000),
+    // });
 
+    res.cookie("token", token, {
+      maxAge: 30 * 24 * 60 * 60 * 1000,
+    });
 
-    res.json({message:"User Added Successfully", data:savedUser});
+    res.json({ message: "User Added Successfully", data: savedUser });
   } catch (err) {
     res.status(400).send("Error : " + err.message);
   }
