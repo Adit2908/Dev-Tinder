@@ -53,29 +53,60 @@ authRouter.post("/signup", async (req, res) => {
   }
 });
 
+// authRouter.post("/login", async (req, res) => {
+//   try {
+//     const { emailId, password } = req.body;
+
+//     const user = await User.findOne({ emailId: emailId });
+//     if (!user) {
+//       throw new Error("Invalid Credential");
+//     }
+
+//     const isPasswordValid = await user.validatePassword(password);
+//     if (isPasswordValid) {
+//       //Create a JWT token
+
+//       const token = await user.getJWT();
+
+//       //Add the token to cookie and send the response to the user
+//       res.cookie("token", token, {
+//         expires: new Date(Date.now() + 8 * 3600000),
+//       });
+//       res.send(user);
+//     } else {
+//       throw new Error("Invalid Credential");
+//     }
+//   } catch (error) {
+//     res.status(400).send("Error : " + error.message);
+//   }
+// });
+
 authRouter.post("/login", async (req, res) => {
   try {
     const { emailId, password } = req.body;
 
-    const user = await User.findOne({ emailId: emailId });
+    const user = await User.findOne({ emailId });
+
     if (!user) {
       throw new Error("Invalid Credential");
     }
 
     const isPasswordValid = await user.validatePassword(password);
-    if (isPasswordValid) {
-      //Create a JWT token
 
-      const token = await user.getJWT();
-
-      //Add the token to cookie and send the response to the user
-      res.cookie("token", token, {
-        expires: new Date(Date.now() + 8 * 3600000),
-      });
-      res.send(user);
-    } else {
+    if (!isPasswordValid) {
       throw new Error("Invalid Credential");
     }
+
+    const token = await user.getJWT();
+
+    res.cookie("token", token, {
+      maxAge: 8 * 60 * 60 * 1000,
+      httpOnly: true,
+      sameSite: "lax",
+      secure: false,
+    });
+
+    res.send(user);
   } catch (error) {
     res.status(400).send("Error : " + error.message);
   }
