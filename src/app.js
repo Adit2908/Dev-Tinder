@@ -4,46 +4,31 @@ const connectDB = require("./config/database");
 const app = express();
 const cookieParser = require("cookie-parser");
 const jwt = require("jsonwebtoken");
-const cors=require('cors')
+const cors = require("cors");
 
 const PORT = process.env.PORT || 7777;
 
-app.use(cors({
-  origin:"http://localhost:5173",
-  credentials:true,
-}));
+app.use(express.json());
 
-
-
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:5173",
-//       "https://dev-tinder-web-aditya34.vercel.app"
-//     ],
-//     credentials: true,
-//   })
-// );
-
-
-// Add before your router middleware
-
+app.use(
+  cors({
+    origin: "https://dev-tinder-62k3.onrender.com",
+    credentials: true,
+  }),
+);
 
 app.use(express.json());
 app.use(cookieParser());
 
-
-
-
-const authRouter=require('./routes/auth');
-const profileRouter=require('./routes/profile');
-const requestRouter=require('./routes/request');
+const authRouter = require("./routes/auth");
+const profileRouter = require("./routes/profile");
+const requestRouter = require("./routes/request");
 const userRouter = require("./routes/user");
 
-app.use("/",authRouter);
-app.use("/",profileRouter);
-app.use("/",requestRouter);
-app.use("/",userRouter)
+app.use("/", authRouter);
+app.use("/", profileRouter);
+app.use("/", requestRouter);
+app.use("/", userRouter);
 
 connectDB()
   .then(() => {
@@ -53,5 +38,6 @@ connectDB()
     });
   })
   .catch((err) => {
-    console.error("Database cannot be connected",err);
+    console.error("Database cannot be connected", err);
   });
+
