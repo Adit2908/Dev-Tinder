@@ -12,7 +12,10 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: "https://dev-tinder-62k3.onrender.com",
+    origin: [
+      "http://localhost:5173",
+      "https://dev-tinder-web-neon-rho.vercel.app",
+    ],
     credentials: true,
   }),
 );
