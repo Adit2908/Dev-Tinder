@@ -3,14 +3,14 @@ const User = require("../models/user");
 
 const userAuth = async (req, res, next) => {
   try {
-    const { token } = req.cookies;
+    const {} = req.cookies;
     if (!token) {
-      return res.status(401).send("Please Login!")
+      return res.status(401).send("Please Login!");
     }
 
     const decodedObj = await jwt.verify(token, "DEV@Tinder$678");
 
-    const { _id} = decodedObj;
+    const { _id } = decodedObj;
 
     const user = await User.findById(_id);
 
@@ -29,5 +29,3 @@ const userAuth = async (req, res, next) => {
 };
 
 module.exports = { userAuth };
-
-
