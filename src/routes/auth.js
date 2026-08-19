@@ -45,6 +45,9 @@ authRouter.post("/signup", async (req, res) => {
 
     res.cookie("token", token, {
       maxAge: 30 * 24 * 60 * 60 * 1000,
+      httpOnly: true,
+      secure: true,
+      sameSite: "none",
     });
 
     res.json({ message: "User Added Successfully", data: savedUser });
@@ -142,25 +145,26 @@ authRouter.post("/login", async (req, res) => {
     res.cookie("token", token, {
       maxAge: 8 * 60 * 60 * 1000,
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      secure: true,
+      sameSite: "none",
     });
 
     console.log("COOKIE SET");
 
     res.send(user);
-
   } catch (error) {
     console.log("LOGIN ERROR:", error);
     res.status(400).send("Error : " + error.message);
   }
 });
 
-
 authRouter.post("/logout", async (req, res) => {
   res.cookie("token", null, {
-    expires: new Date(Date.now()),
-  });
+  expires: new Date(Date.now()),
+  httpOnly: true,
+  secure: true,
+  sameSite: "none",
+});
   res.send("logout succesfull");
 });
 module.exports = authRouter;
