@@ -14,7 +14,7 @@ app.use(
   cors({
     origin: [
        "http://localhost:5173",
-      "https://dev-tinder-web-aditya34.vercel.app",
+      "https://dev-tinder-web-lemon-xi.vercel.app",
     ],
      
     
