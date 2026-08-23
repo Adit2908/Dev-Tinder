@@ -22,7 +22,7 @@ app.use(
   }),
 );
 
-app.use(express.json());
+
 app.use(cookieParser());
 
 const authRouter = require("./routes/auth");
@@ -39,7 +39,7 @@ connectDB()
   .then(() => {
     console.log("Database connection established");
     app.listen(PORT, () => {
-      console.log("server is successfully lisetening on port 7777...");
+      console.log(`server is successfully lisetening on port ${PORT}`);
     });
   })
   .catch((err) => {
