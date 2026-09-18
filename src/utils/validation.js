@@ -10,7 +10,7 @@ const ValidateSignUpData = (req) => {
   } else if (!validator.isStrongPassword(password)) {
     throw new Error("Please enter a strong password");
   }
-};
+}; 
 
 const validateEditProfileData=(req)=>{
     const allowedEditFields=["firstName","lastName","photoUrl","gender","age","about","skills"];
